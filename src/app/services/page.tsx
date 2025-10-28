@@ -3,6 +3,32 @@ import Link from "next/link";
 
 export default function Services() {
   const services = [
+{/* HERO — white card with image area */}
+<section className="rounded-3xl bg-white border p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
+  {/* LEFT: text */}
+  <div>
+    <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+      Services
+    </span>
+    <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B2042]">
+      False ceilings & gypsum solutions—built to spec, delivered on time.
+    </h1>
+    <p className="mt-4 text-slate-600">
+      Al Amwaj provides coordinated, high-quality ceiling and partition works for
+      residential, commercial, and institutional projects across the UAE. Our teams
+      align closely with main contractors to avoid rework and keep programs on schedule.
+    </p>
+  </div>
+
+  {/* RIGHT: image box (drop your file at /public/services-hero.png) */}
+  <div className="relative h-[260px] md:h-[340px] rounded-2xl overflow-hidden bg-slate-100 border">
+    <img
+      src="/services-hero.png"
+      alt="Services hero"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  </div>
+</section>
     {
       title: "False Ceiling Installation",
       desc:
