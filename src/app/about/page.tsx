@@ -41,7 +41,7 @@ export default function About() {
         {/* RIGHT IMAGE */}
         <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-slate-100 border">
           <Image
-            src="/about2.jpeg"
+            src="/about2.jpg"
             alt="Al Amwaj team working on site"
             fill
             className="object-cover"
@@ -54,7 +54,7 @@ export default function About() {
         {/* LEFT IMAGE */}
         <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-slate-100 border">
           <Image
-            src="/about1.jpeg"
+            src="/about1.jpg"
             alt="Ceiling works project"
             fill
             className="object-cover"
