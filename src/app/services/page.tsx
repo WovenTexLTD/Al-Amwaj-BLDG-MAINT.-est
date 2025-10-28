@@ -1,66 +1,131 @@
-import "./globals.css";
+import Image from "next/image";
 import Link from "next/link";
-import { Plus_Jakarta_Sans } from "next/font/google";
 
-const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
+export default function Services() {
+  const services = [
+    {
+      title: "False Ceiling Installation",
+      desc:
+        "Supply & install of gypsum board ceilings, MF/C-channel systems, concealed and exposed grids, bulkheads and feature ceilings according to project specs.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 7h18M3 12h18M3 17h18" />
+        </svg>
+      ),
+    },
+    {
+      title: "Gypsum Partitions",
+      desc:
+        "Fire-rated and acoustic stud partitions, shaft walls, moisture-resistant boards for wet areas, doors & openings coordination, trims and protection.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M4 5h6v14H4zM14 5h6v14h-6z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Acoustic Systems",
+      desc:
+        "Acoustic ceilings and wall linings, perforated boards, mineral fiber tiles, baffles and rafts; NRC/SRC targets achieved with tested assemblies.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M4 12h3M9 10v4M13 8v8M17 6v12M20 12h0" />
+        </svg>
+      ),
+    },
+    {
+      title: "Maintenance & Repairs",
+      desc:
+        "Patch and repair, water-damage replacement, ceiling access panels, repainting readiness, and post-handover support.",
+      icon: (
+        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 21l3-3h12l3 3M7 14h10M9 7h6M5 10h14" />
+        </svg>
+      ),
+    },
+  ];
 
-export const metadata = {
-  title: "Al Amwaj Building Maintenance EST.",
-  description: "False Ceiling & Gypsum Works in the UAE",
-};
+  const steps = [
+    { k: "01", h: "Consult & Site Survey", p: "We review drawings/BOQ, visit site if needed, and align on program & access." },
+    { k: "02", h: "Shop Drawings", p: "Layouts, sections and details coordinated with MEP, sprinklers and lighting." },
+    { k: "03", h: "Supply & Install", p: "Materials delivered with batch records; install to spec with level/plumb checks." },
+    { k: "04", h: "QA/QC", p: "Acoustic/fire assemblies verified; snag list closed before paint and handover." },
+    { k: "05", h: "Handover", p: "As-built drawings and warranties submitted; post-handover maintenance available." },
+  ];
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const brands = ["Knauf", "Gyproc", "Armstrong", "Owa", "Rockfon", "Saint-Gobain"];
+
   return (
-    <html lang="en">
-      <body className={`${font.className} min-h-screen text-slate-900`}>
-        {/* FULL-PAGE BACKGROUND (image + navy tint + top gradient) */}
-        <div className="fixed inset-0 -z-10">
-          <img
-            src="/hero.png"      /* ensure /public/hero.png exists (or change name) */
-            alt=""
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-[#0B2042]/55" />
-          <div className="absolute inset-x-0 top-0 h-[28vh] bg-gradient-to-b from-white to-transparent" />
+    <div className="space-y-16">
+      {/* HERO with background image */}
+      <section className="relative overflow-hidden rounded-3xl border min-h-[400px]">
+        <Image src="/services-hero.png" alt="False ceiling works" fill className="object-cover" />
+        <div className="absolute inset-0 bg-[#0B2042]/60" />
+        <div className="relative z-10 p-8 md:p-12 text-white max-w-3xl">
+          <span className="inline-block text-xs font-semibold tracking-widest opacity-80 uppercase">
+            Services
+          </span>
+          <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+            False ceilings & gypsum solutions—built to spec, delivered on time.
+          </h1>
+          <p className="mt-4 text-white/90">
+            Al Amwaj provides coordinated, high-quality ceiling and partition works for residential, commercial,
+            and institutional projects across the UAE.
+          </p>
         </div>
+      </section>
 
-        {/* HEADER */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-          <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Al Amwaj Logo" className="h-7 w-auto" />
-              <Link href="/" className="text-lg font-semibold tracking-tight">
-                Al Amwaj Building Maintenance EST.
-              </Link>
+      {/* WHAT WE DO */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-white">What we do</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {services.map((s) => (
+            <div key={s.title} className="p-6 rounded-2xl bg-white border hover:shadow-sm transition">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-slate-100 text-[#0B2042]">{s.icon}</div>
+                <h3 className="font-medium text-[#0B2042]">{s.title}</h3>
+              </div>
+              <p className="mt-3 text-sm text-slate-600">{s.desc}</p>
             </div>
-            <div className="flex gap-6 text-sm">
-              <Link href="/services" className="hover:text-[#0B2042]">Services</Link>
-              <Link href="/projects" className="hover:text-[#0B2042]">Projects</Link>
-              <Link href="/about" className="hover:text-[#0B2042]">About</Link>
-              <Link
-                href="/contact"
-                className="font-medium px-3 py-1.5 rounded-md bg-[#0B2042] text-white hover:opacity-90"
-              >
-                Get In Touch
-              </Link>
-            </div>
-          </nav>
-        </header>
+          ))}
+        </div>
+      </section>
 
-        {/* PAGE CONTENT */}
-        <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
+      {/* PROCESS */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-white">Our process</h2>
+        <ol className="grid md:grid-cols-5 gap-4">
+          {steps.map((st) => (
+            <li key={st.k} className="rounded-2xl bg-white border p-5">
+              <div className="text-xs font-semibold text-[#0B2042]/70">{st.k}</div>
+              <div className="mt-1 font-medium text-[#0B2042]">{st.h}</div>
+              <p className="mt-2 text-sm text-slate-600">{st.p}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
 
-        {/* FOOTER */}
-        <footer className="mt-16 border-t bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p>© {new Date().getFullYear()} Al Amwaj Building Maintenance EST.</p>
-            <div className="flex gap-6">
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
+      {/* BRANDS */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-semibold tracking-tight text-white">Systems we work with</h2>
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
+          {brands.map((b) => (
+            <div key={b} className="h-12 rounded-xl bg-white/90 border flex items-center justify-center text-sm text-slate-600">
+              {b}
             </div>
-          </div>
-        </footer>
-      </body>
-    </html>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="rounded-2xl border bg-white p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div>
+          <h3 className="text-xl font-semibold text-[#0B2042]">Share your drawings or BOQ</h3>
+        </div>
+        <Link href="/contact" className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90">
+          Request a Quote
+        </Link>
+      </section>
+    </div>
   );
 }
