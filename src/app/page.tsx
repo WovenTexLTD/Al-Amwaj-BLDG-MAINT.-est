@@ -1,41 +1,52 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="space-y-16">
-      {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl bg-white border">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#EAF2FF] via-white to-[#F7FAFF]" />
-        <div className="relative grid md:grid-cols-2 gap-10 p-8 md:p-12">
+      {/* HERO with background image + navy overlay */}
+      <section className="relative overflow-hidden rounded-3xl border min-h-[520px]">
+        {/* background image */}
+        <Image
+          src="/hero.jpg"
+          alt="Al Amwaj project site"
+          fill
+          priority
+          className="object-cover"
+        />
+        {/* navy tint overlay */}
+        <div className="absolute inset-0 bg-[#0B2042]/60" />
+
+        {/* content */}
+        <div className="relative z-10 grid md:grid-cols-2 gap-10 p-8 md:p-12 text-white">
           <div>
-            <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase/7 opacity-80">
               False Ceilings & Gypsum Works
             </span>
-            <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight tracking-tight text-[#0B2042]">
+            <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight tracking-tight">
               Precision ceilings, delivered on time.
             </h1>
-            <p className="mt-4 text-slate-600">
+            <p className="mt-4 text-white/90">
               We design, supply, and install high-quality gypsum and ceiling systems for
               residential, commercial, and institutional projects across the UAE.
-              Coordinated execution, clean finishes, and reliable handover.
             </p>
             <div className="mt-6 flex gap-3">
-              <Link href="/contact" className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90">
+              <Link href="/contact" className="px-5 py-2.5 rounded-md bg-white text-[#0B2042] hover:opacity-90">
                 Get a Quote
               </Link>
-              <Link href="/projects" className="px-5 py-2.5 rounded-md border hover:bg-white/60">
+              <Link href="/projects" className="px-5 py-2.5 rounded-md border border-white/40 hover:bg-white/10">
                 View Projects
               </Link>
             </div>
 
-            {/* Trust bar */}
+            {/* trust bar */}
             <div className="mt-8">
-              <p className="text-xs uppercase tracking-widest text-slate-500">Trusted by</p>
-              <div className="mt-3 grid grid-cols-3 md:grid-cols-5 gap-4">
+              <p className="text-xs uppercase tracking-widest text-white/70">Trusted by</p>
+              <div className="mt-3 grid grid-cols-3 md:grid-cols-5 gap-3">
                 {["Ajmal Makan", "Al Hanoo", "Innova", "Ali & Sons", "Tornado"].map((name) => (
                   <div
                     key={name}
-                    className="h-10 rounded-md bg-slate-100 border text-slate-400 text-xs flex items-center justify-center"
+                    className="h-9 rounded-md border border-white/30 text-white/80 text-xs flex items-center justify-center backdrop-blur-sm bg-white/10"
                   >
                     {name}
                   </div>
@@ -44,25 +55,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right visual */}
-          <div className="rounded-2xl bg-slate-100 border min-h-[280px] md:min-h-[360px] flex items-center justify-center text-slate-400">
-            (Hero image – add /public/hero.jpg)
-          </div>
+          {/* empty right column keeps layout balanced on wide screens */}
+          <div className="hidden md:block" />
         </div>
 
-        {/* Stats strip */}
-        <div className="relative grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x text-center border-t bg-white">
-          {[
-            { k: "15/120", v: "Technicians (available/capacity)" },
-            { k: "On-Time", v: "Delivery & Handover" },
-            { k: "UAE-Wide", v: "Residential & Commercial" },
-          ].map((s) => (
-            <div key={s.k} className="p-6">
-              <div className="text-2xl font-semibold text-[#0B2042]">{s.k}</div>
-              <div className="text-xs text-slate-500 mt-1">{s.v}</div>
-            </div>
-          ))}
-        </div>
+        {/* subtle bottom gradient for readability */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0B2042]/40 to-transparent" />
       </section>
 
       {/* SERVICES */}
@@ -105,7 +103,7 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* CTA STRIP */}
+      {/* CTA */}
       <section className="rounded-2xl border bg-white p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <h3 className="text-xl font-semibold text-[#0B2042]">Have drawings or a BOQ ready?</h3>
