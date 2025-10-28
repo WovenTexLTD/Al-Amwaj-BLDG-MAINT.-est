@@ -74,17 +74,76 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* ===== PAGE CONTENT ===== */}
         <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
 
-        {/* ===== FOOTER ===== */}
-        <footer className="mt-16 border-t bg-white">
-          <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p>© {new Date().getFullYear()} Al Amwaj Building Maintenance EST.</p>
-            <div className="flex gap-6">
-              <Link href="/privacy">Privacy</Link>
-              <Link href="/terms">Terms</Link>
-            </div>
-          </div>
-        </footer>
-      </body>
-    </html>
-  );
-}
+       {/* ===== FOOTER ===== */}
+<footer className="mt-16 border-t bg-white">
+  <div className="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-3 text-sm">
+    {/* Brand / Copyright */}
+    <div className="space-y-2">
+      <div className="flex items-center gap-2">
+        <img src="/logo.png" alt="Al Amwaj Logo" className="h-8 w-auto" />
+        <span className="font-semibold">Al Amwaj Building Maintenance EST.</span>
+      </div>
+      <p className="text-slate-600">
+        © {new Date().getFullYear()} Al Amwaj Building Maintenance EST. All rights reserved.
+      </p>
+    </div>
+
+    {/* Contact Info */}
+    <div>
+      <h4 className="font-medium text-[#0B2042] mb-2">Contact</h4>
+      <ul className="space-y-1 text-slate-700">
+        <li>
+          <span className="block">Office:</span>
+          <address className="not-italic">
+            <span>Dubai, United Arab Emirates</span><br />
+            <span>Business Bay • (Replace with exact address)</span>
+          </address>
+        </li>
+        <li>
+          Phone:{" "}
+          <a href="tel:+971500000000" className="text-[#0B2042] hover:underline">
+            +971 50 000 0000
+          </a>
+        </li>
+        <li>
+          Email:{" "}
+          <a href="mailto:info@alamwaj.com" className="text-[#0B2042] hover:underline">
+            info@alamwaj.com
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    {/* Quick Links / Social */}
+    <div>
+      <h4 className="font-medium text-[#0B2042] mb-2">Links</h4>
+      <ul className="space-y-1 text-slate-700">
+        <li>
+          <a href="/services" className="hover:underline">Services</a>
+        </li>
+        <li>
+          <a href="/projects" className="hover:underline">Projects</a>
+        </li>
+        <li>
+  WhatsApp:{" "}
+  <a href="https://wa.me/971500000000" target="_blank" rel="noopener" className="text-[#0B2042] hover:underline">
+    +971 50 000 0000
+  </a>
+</li>
+          <a
+            href="https://www.linkedin.com/company/your-company-slug"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0B2042] hover:underline"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li className="text-slate-500">
+          <a href="/privacy" className="hover:underline">Privacy</a> ·{" "}
+          <a href="/terms" className="hover:underline">Terms</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
