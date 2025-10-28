@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export default function Services() {
   const services = [
+    
 {/* HERO — white card with image area */}
 <section className="rounded-3xl bg-white border p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
   {/* LEFT: text */}
