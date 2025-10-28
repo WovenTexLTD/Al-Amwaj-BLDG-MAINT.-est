@@ -74,7 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* ===== PAGE CONTENT ===== */}
         <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
 
-       {/* ===== FOOTER ===== */}
+      {/* ===== FOOTER ===== */}
 <footer className="mt-16 border-t bg-white">
   <div className="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-3 text-sm">
     {/* Brand / Copyright */}
@@ -110,6 +110,39 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="mailto:info@alamwaj.com" className="text-[#0B2042] hover:underline">
             info@alamwaj.com
           </a>
+        </li>
+      </ul>
+    </div>
+
+    {/* Quick Links / Social */}
+    <div>
+      <h4 className="font-medium text-[#0B2042] mb-2">Links</h4>
+      <ul className="space-y-1 text-slate-700">
+        <li>
+          <a href="/services" className="hover:underline">Services</a>
+        </li>
+        <li>
+          <a href="/projects" className="hover:underline">Projects</a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/company/your-company-slug"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0B2042] hover:underline"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li className="text-slate-500">
+          <a href="/privacy" className="hover:underline">Privacy</a> ·{" "}
+          <a href="/terms" className="hover:underline">Terms</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
         </li>
       </ul>
     </div>
