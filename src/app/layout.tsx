@@ -28,18 +28,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/" className="text-lg font-semibold tracking-tight">
                 Al Amwaj Building Maintenance EST.
               </Link>
-            </div>
-            <div className="flex gap-6 text-sm">
-              <Link href="/services" className="hover:text-[#0B2042]">Services</Link>
-              <Link href="/projects" className="hover:text-[#0B2042]">Projects</Link>
-              <Link href="/about" className="hover:text-[#0B2042]">About</Link>
-              <Link
-                href="/contact"
-                className="font-medium px-3 py-1.5 rounded-md bg-[#0B2042] text-white hover:opacity-90"
-              >
-                Get In Touch
-              </Link>
-            </div>
+         <div className="flex gap-4 text-sm items-center">
+  <Link href="/services" className="hover:text-[#0B2042] transition">
+    Services
+  </Link>
+  <Link href="/projects" className="hover:text-[#0B2042] transition">
+    Projects
+  </Link>
+  <Link href="/about" className="hover:text-[#0B2042] transition">
+    About
+  </Link>
+
+  {/* NEW HIRING BUTTON */}
+  <Link
+    href="/hire"
+    className="font-medium px-3 py-1.5 rounded-md border border-[#0B2042] text-[#0B2042] hover:bg-[#0B2042] hover:text-white transition"
+  >
+    Hiring
+  </Link>
+
+  <Link
+    href="/contact"
+    className="font-medium px-3 py-1.5 rounded-md bg-[#0B2042] text-white hover:opacity-90 transition"
+  >
+    Get In Touch
+  </Link>
+</div>
           </nav>
         </header>
 
