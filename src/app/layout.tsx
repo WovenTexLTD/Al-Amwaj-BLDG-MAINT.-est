@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${font.className} min-h-screen bg-[#F6F8FB] text-slate-900`}>
         {/* Header */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
+       <header className="sticky top-0 z-50 bg-white border-b">
           <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
             <Link href="/" className="text-xl font-semibold tracking-tight">
               Al Amwaj
