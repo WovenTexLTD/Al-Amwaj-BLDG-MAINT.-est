@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Link href="/projects" className="hover:text-[#0B2042]">Projects</Link>
         <Link href="/about" className="hover:text-[#0B2042]">About</Link>
         <Link href="/contact" className="font-medium px-3 py-1.5 rounded-md bg-[#0B2042] text-white hover:opacity-90">
-          Get a Quote
+          Get In Touch
         </Link>
       </div>
     </nav>
