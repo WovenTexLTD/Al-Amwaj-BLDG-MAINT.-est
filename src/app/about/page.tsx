@@ -6,7 +6,7 @@ export default function About() {
     <div className="space-y-16">
       {/* ===== HERO ===== */}
       <section className="rounded-3xl bg-white border p-8 md:p-12 text-center">
-        <span className="inline-block text-M font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+        <span className="inline-block text-L font-semibold tracking-widest text-[#0B2042]/70 uppercase">
           About Us
         </span>
         <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B2042]">
