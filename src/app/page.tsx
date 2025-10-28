@@ -95,38 +95,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FEATURED PROJECTS */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-white">
-          Featured Projects
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { t: "35 Villas in UAQ", c: "Ajmal Makan City" },
-            { t: "Bulgari Villas, Jumeira", c: "Innova Build" },
-            { t: "KIZAD Headquarters", c: "Ali & Sons Contracting" },
-          ].map((p) => (
-            <div
-              key={p.t}
-              className="rounded-2xl overflow-hidden border bg-white"
-            >
-              <div className="h-36 bg-slate-100 flex items-center justify-center text-slate-400">
-                (image)
-              </div>
-              <div className="p-4">
-                <h3 className="font-medium">{p.t}</h3>
-                <p className="text-sm text-slate-600">{p.c}</p>
-              </div>
-            </div>
-          ))}
+     {/* FEATURED PROJECTS */}
+<section className="space-y-6">
+  <h2 className="text-2xl font-semibold tracking-tight text-white">
+    Featured Projects
+  </h2>
+  <div className="grid md:grid-cols-3 gap-6">
+    {[
+      {
+        t: "KIZAD Headquarters, Abu Dhabi",
+        c: "Ali & Sons Contracting",
+        img: "/hq.png",
+      },
+      {
+        t: "Residential Apartments, Dubai",
+        c: "Ajmal Makan City",
+        img: "/apartment.png",
+      },
+      {
+        t: "Bulgari Villas, Jumeira",
+        c: "Innova Build",
+        img: "/bulgari.png",
+      },
+    ].map((p) => (
+      <div
+        key={p.t}
+        className="rounded-2xl overflow-hidden border bg-white hover:shadow-lg transition"
+      >
+        <div className="relative h-40 md:h-48">
+          <img
+            src={p.img}
+            alt={p.t}
+            className="w-full h-full object-cover"
+          />
         </div>
-        <Link
-          href="/projects"
-          className="inline-block text-sm text-white hover:underline"
-        >
-          See all projects →
-        </Link>
-      </section>
+        <div className="p-4">
+          <h3 className="font-medium text-[#0B2042]">{p.t}</h3>
+          <p className="text-sm text-slate-600">{p.c}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <Link
+    href="/projects"
+    className="inline-block text-sm text-white hover:underline"
+  >
+    See all projects →
+  </Link>
+</section>
 
       {/* CTA */}
       <section className="rounded-2xl border bg-white p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-4">
