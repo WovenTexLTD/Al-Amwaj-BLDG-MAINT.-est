@@ -58,7 +58,7 @@ export default function Home() {
         {/* RIGHT SIDE: IMAGE BOX */}
         <div className="relative h-[320px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm">
           <Image
-            src="/hero.png" // or any other image you want to display here
+            src="/residential.png" // or any other image you want to display here
             alt="Ongoing Al Amwaj Project"
             fill
             className="object-cover"
