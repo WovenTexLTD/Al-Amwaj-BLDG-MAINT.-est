@@ -41,26 +41,41 @@ export default function Hire() {
         </p>
       </section>
 
-   {/* Roles Section */}
+  {/* Roles Section */}
 <section className="space-y-6">
   <h2 className="text-2xl font-semibold tracking-tight text-white text-center">
     Positions We Commonly Hire
   </h2>
 
-  <div className="flex flex-wrap justify-center gap-6">
-    {roles.map((r, i) => (
-      <div
-        key={r.title}
-        className={`p-6 rounded-2xl bg-white border hover:shadow-sm transition w-[340px] ${
-          i >= 3 ? "lg:translate-x-[180px]" : ""
-        }`}
-      >
-        <h3 className="font-medium text-[#0B2042]">{r.title}</h3>
-        <p className="mt-2 text-sm text-slate-600">{r.desc}</p>
-      </div>
-    ))}
+  {/* 1 col (mobile) → 2 cols (tablet) → 6 cols (desktop) */}
+  <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
+    {roles.map((r, i) => {
+      // base card classes
+      let cls =
+        "p-6 rounded-2xl bg-white border hover:shadow-sm transition";
+
+      // on large screens, each card spans 2 columns (so 3 per row)
+      // and we manually center the last two using col-start
+      const lgSpan = " lg:col-span-2";
+
+      // position the bottom two centered (columns 2–3 and 4–5)
+      const positionClass =
+        i === 3
+          ? " lg:col-start-2" // 4th card starts at col 2
+          : i === 4
+          ? " lg:col-start-4" // 5th card starts at col 4
+          : "";
+
+      return (
+        <div key={r.title} className={cls + lgSpan + positionClass}>
+          <h3 className="font-medium text-[#0B2042]">{r.title}</h3>
+          <p className="mt-2 text-sm text-slate-600">{r.desc}</p>
+        </div>
+      );
+    })}
   </div>
 </section>
+
 
       {/* Message + CTA */}
       <section className="rounded-2xl border bg-white p-8 md:p-10 text-center space-y-4">
