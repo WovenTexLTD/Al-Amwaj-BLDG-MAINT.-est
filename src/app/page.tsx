@@ -1,53 +1,45 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <div className="space-y-16">
- // HERO (white box sitting on top of the page background)
-<section className="relative overflow-hidden rounded-3xl bg-white border p-8 md:p-12">
-  <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
-    False Ceilings & Gypsum Works
-  </span>
-  <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight tracking-tight text-[#0B2042]">
-    Precision ceilings, delivered on time.
-  </h1>
-  <p className="mt-4 text-slate-600">
-    We design, supply, and install high-quality gypsum and ceiling systems for
-    residential, commercial, and institutional projects across the UAE.
-    Coordinated execution, clean finishes, and reliable handover.
-  </p>
-  <div className="mt-6 flex gap-3">
-    <Link href="/contact" className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90">
-      Get a Quote
-    </Link>
-    <Link href="/projects" className="px-5 py-2.5 rounded-md border hover:bg-white/60">
-      View Projects
-    </Link>
-  </div>
+      {/* HERO – white card on top of page background */}
+      <section className="relative overflow-hidden rounded-3xl bg-white border p-8 md:p-12">
+        <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+          False Ceilings & Gypsum Works
+        </span>
+        <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight tracking-tight text-[#0B2042]">
+          Precision ceilings, delivered on time.
+        </h1>
+        <p className="mt-4 text-slate-600">
+          We design, supply, and install high-quality gypsum and ceiling systems for
+          residential, commercial, and institutional projects across the UAE.
+          Coordinated execution, clean finishes, and reliable handover.
+        </p>
 
-  {/* Trust bar */}
-  <div className="mt-8">
-    <p className="text-xs uppercase tracking-widest text-slate-500">Trusted by</p>
-    <div className="mt-3 grid grid-cols-3 md:grid-cols-5 gap-3">
-      {["Ajmal Makan", "Al Hanoo", "Innova", "Ali & Sons", "Tornado"].map((name) => (
-        <div
-          key={name}
-          className="h-9 rounded-md border text-slate-500 text-xs flex items-center justify-center bg-slate-50"
-        >
-          {name}
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-          {/* empty right column keeps layout balanced on wide screens */}
-          <div className="hidden md:block" />
+        <div className="mt-6 flex gap-3">
+          <Link href="/contact" className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90">
+            Get a Quote
+          </Link>
+          <Link href="/projects" className="px-5 py-2.5 rounded-md border hover:bg-white/60">
+            View Projects
+          </Link>
         </div>
 
-        {/* subtle bottom gradient for readability */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0B2042]/40 to-transparent" />
+        {/* Trust bar */}
+        <div className="mt-8">
+          <p className="text-xs uppercase tracking-widest text-slate-500">Trusted by</p>
+          <div className="mt-3 grid grid-cols-3 md:grid-cols-5 gap-3">
+            {["Ajmal Makan", "Al Hanoo", "Innova", "Ali & Sons", "Tornado"].map((name) => (
+              <div
+                key={name}
+                className="h-9 rounded-md border text-slate-500 text-xs flex items-center justify-center bg-slate-50"
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* SERVICES */}
