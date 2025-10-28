@@ -6,7 +6,7 @@ export default function About() {
     <div className="space-y-16">
       {/* ===== HERO ===== */}
       <section className="rounded-3xl bg-white border p-8 md:p-12 text-center">
-        <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+        <span className="inline-block text-M font-semibold tracking-widest text-[#0B2042]/70 uppercase">
           About Us
         </span>
         <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B2042]">
@@ -41,7 +41,7 @@ export default function About() {
         {/* RIGHT IMAGE */}
         <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-slate-100 border">
           <Image
-            src="/about-1.png"
+            src="/about2.jpeg"
             alt="Al Amwaj team working on site"
             fill
             className="object-cover"
@@ -54,7 +54,7 @@ export default function About() {
         {/* LEFT IMAGE */}
         <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden bg-slate-100 border">
           <Image
-            src="/about-2.png"
+            src="/about1.jpeg"
             alt="Ceiling works project"
             fill
             className="object-cover"
