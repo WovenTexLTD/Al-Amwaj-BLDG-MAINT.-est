@@ -8,7 +8,7 @@ export default function Home() {
       <section className="relative overflow-hidden rounded-3xl border min-h-[520px]">
         {/* background image */}
         <Image
-          src="/hero.jpg"
+          src="/hero.png"
           alt="Al Amwaj project site"
           fill
           priority
