@@ -76,7 +76,6 @@ export default function Hire() {
   </div>
 </section>
 
-
       {/* Message + CTA */}
       <section className="rounded-2xl border bg-white p-8 md:p-10 text-center space-y-4">
         <h3 className="text-2xl font-semibold text-[#0B2042]">Interested in joining us?</h3>
