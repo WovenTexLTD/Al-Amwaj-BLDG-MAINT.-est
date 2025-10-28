@@ -3,16 +3,16 @@ import Image from "next/image";
 export default function Projects() {
   const projects = [
     // Larger showcase images
-    { title: "KIZAD Headquarters", client: "Ali & Sons", img: "/hq.png", size: "large" },
-    { title: "Residential Apartments", client: "Ajmal Makan City", img: "/apartment.png", size: "large" },
+    { title: "KIZAD Headquarters", client: "Ali & Sons", img: "/hq.png", size: "medium" },
+    { title: "Residential Apartments", client: "Ajmal Makan City", img: "/apartment.png", size: "medium" },
 
     // Smaller, zoomed-in gallery images
-    { title: "Bulgari Villas, Jumeira", client: "Innova Build", img: "/bulgari.png", size: "small" },
-    { title: "Palm Jumeirah Villas", client: "Private", img: "/villa.png", size: "small" },
-    { title: "Luxury Interior Fit-out", client: "Private", img: "/interior.png", size: "small" },
-    { title: "Retail & Mall Wing", client: "Main Contractor", img: "/mall.png", size: "small" },
-    { title: "School Campus Block", client: "Developer", img: "/school.png", size: "small" },
-    { title: "Corporate Office Floors", client: "Multiple", img: "/office.png", size: "small" },
+    { title: "Bulgari Villas, Jumeira", client: "Innova Build", img: "/bulgari.png", size: "medium" },
+    { title: "Palm Jumeirah Villas", client: "Private", img: "/villa.png", size: "medium" },
+    { title: "Luxury Interior Fit-out", client: "Private", img: "/interior.png", size: "medium" },
+    { title: "Retail & Mall Wing", client: "Main Contractor", img: "/mall.png", size: "medium" },
+    { title: "School Campus Block", client: "Developer", img: "/school.png", size: "medium" },
+    { title: "Corporate Office Floors", client: "Multiple", img: "/office.png", size: "medium" },
   ];
 
   return (
@@ -40,12 +40,12 @@ export default function Projects() {
             <figure
               key={p.title}
               className={`group relative overflow-hidden rounded-3xl border bg-white shadow-sm hover:shadow-lg transition-shadow ${
-                p.size === "large" ? "sm:col-span-2 lg:col-span-2" : ""
+                p.size === "medium" ? "sm:col-span-2 lg:col-span-2" : ""
               }`}
             >
               <div
                 className={`relative ${
-                  p.size === "large"
+                  p.size === "medium"
                     ? "h-[320px] sm:h-[380px] md:h-[420px]"
                     : "h-[220px] sm:h-[260px] md:h-[300px]"
                 }`}
