@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
           <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Al Amwaj Logo" className="h-7 w-auto" />
+              <img src="/logo.png" alt="Al Amwaj Logo" className="h-14 w-auto -my-2" />
               <Link href="/" className="text-lg font-semibold tracking-tight">
                 Al Amwaj Building Maintenance EST.
               </Link>
