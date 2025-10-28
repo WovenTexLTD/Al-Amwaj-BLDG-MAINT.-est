@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./globals.s";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
