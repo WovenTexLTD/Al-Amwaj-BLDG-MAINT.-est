@@ -41,23 +41,27 @@ export default function Hire() {
         </p>
       </section>
 
-      {/* Roles */}
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-white text-center">
-          Positions We Commonly Hire
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {roles.map((r) => (
-            <div
-              key={r.title}
-              className="p-6 rounded-2xl bg-white border hover:shadow-sm transition text-left"
-            >
-              <h3 className="font-medium text-[#0B2042]">{r.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{r.desc}</p>
-            </div>
-          ))}
+     {/* Roles Section */}
+<section className="space-y-6">
+  <h2 className="text-2xl font-semibold tracking-tight text-white text-center">
+    Positions We Commonly Hire
+  </h2>
+
+  {/* Wrap grid in flex to center last row */}
+  <div className="flex justify-center">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      {roles.map((r) => (
+        <div
+          key={r.title}
+          className="p-6 rounded-2xl bg-white border hover:shadow-sm transition w-[320px]"
+        >
+          <h3 className="font-medium text-[#0B2042]">{r.title}</h3>
+          <p className="mt-2 text-sm text-slate-600">{r.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Message + CTA */}
       <section className="rounded-2xl border bg-white p-8 md:p-10 text-center space-y-4">
