@@ -1,47 +1,44 @@
-"use client";
-import { useState } from "react";
+import { NextRequest, NextResponse } from "next/server";
+import { writeFile } from "fs/promises";
+import path from "path";
 
-export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+export const runtime = "nodejs"; // ensure Node runtime
 
-  const mailto = `mailto:info@yourdomain.com?subject=Website%20Inquiry&body=${encodeURIComponent(
-    `Name: ${name}\nEmail: ${email}\n\n${message}`
-  )}`;
+export async function POST(req: NextRequest) {
+  try {
+    const form = await req.formData();
 
-  return (
-    <section className="space-y-6 max-w-lg">
-      <h1 className="text-3xl font-bold">Contact Us</h1>
-      <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-        <input
-          placeholder="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="border w-full rounded-md px-3 py-2"
-        />
-        <input
-          placeholder="Your Email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="border w-full rounded-md px-3 py-2"
-        />
-        <textarea
-          placeholder="Your Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="border w-full rounded-md px-3 py-2 h-32"
-        />
-        <a href={mailto} className="bg-slate-900 text-white px-4 py-2 rounded-md inline-block">
-          Send Message
-        </a>
-      </form>
-      <p className="text-slate-600">
-        Email: info@yourdomain.com<br />
-        Location: Dubai, UAE<br />
-        Hours: Sun–Thu, 9am–6pm
-      </p>
-    </section>
-  );
+    const name = String(form.get("name") || "");
+    const email = String(form.get("email") || "");
+    const phone = String(form.get("phone") || "");
+    const reason = String(form.get("reason") || "");
+    const message = String(form.get("message") || "");
+    const cv = form.get("cv") as File | null;
+
+    // Basic validation
+    if (!name || !email) {
+      return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
+    }
+
+    // If CV provided, save to /tmp
+    let savedPath: string | null = null;
+    if (cv && typeof cv === "object") {
+      const bytes = Buffer.from(await cv.arrayBuffer());
+      const filenameSafe = cv.name.replace(/[^a-zA-Z0-9.\-_]/g, "_");
+      const filePath = path.join("/tmp", `${Date.now()}_${filenameSafe}`);
+      await writeFile(filePath, bytes);
+      savedPath = filePath;
+    }
+
+    // Here you could forward the details by email or push to a CRM.
+    // e.g., send with Resend/Nodemailer using env vars.
+
+    return NextResponse.json({
+      ok: true,
+      savedPath, // for debugging; remove if not needed
+      received: { name, email, phone, reason, message, hasCV: !!cv },
+    });
+  } catch (err: any) {
+    return NextResponse.json({ error: err?.message || "Server error" }, { status: 500 });
+  }
 }
