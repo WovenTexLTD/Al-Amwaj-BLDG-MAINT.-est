@@ -54,21 +54,33 @@ export default function Services() {
 
   return (
     <div className="space-y-16">
-      {/* HERO CARD */}
-      <section className="rounded-3xl bg-white border p-8 md:p-12">
-        <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
-          Services
-        </span>
-        <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B2042]">
-          False ceilings & gypsum solutions—built to spec, delivered on time.
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-3xl">
-          Al Amwaj provides coordinated, high-quality ceiling and partition works for residential, commercial and
-          institutional projects across the UAE. Our teams align closely with main contractors to avoid rework and keep
-          programs on schedule.
-        </p>
-      </section>
+     {/* HERO CARD WITH BACKGROUND IMAGE */}
+<section className="relative overflow-hidden rounded-3xl border min-h-[400px]">
+  {/* background image */}
+  <img
+    src="/services-hero.png"
+    alt="False ceiling works site"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  {/* overlay for readability */}
+  <div className="absolute inset-0 bg-[#0B2042]/60" />
 
+  {/* content */}
+  <div className="relative z-10 p-8 md:p-12 text-white max-w-3xl">
+    <span className="inline-block text-xs font-semibold tracking-widest uppercase/7 opacity-80">
+      Services
+    </span>
+    <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+      False ceilings & gypsum solutions—built to spec, delivered on time.
+    </h1>
+    <p className="mt-4 text-white/90">
+      Al Amwaj provides coordinated, high-quality ceiling and partition works for residential, commercial, and
+      institutional projects across the UAE. Our teams align closely with main contractors to avoid rework and keep
+      programs on schedule.
+    </p>
+  </div>
+</section>
+      
       {/* SERVICE CARDS */}
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold tracking-tight text-white">What we do</h2>
