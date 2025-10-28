@@ -29,7 +29,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   {/* Header */}
   <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-    <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+  <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+    <div className="flex items-center gap-2">
+      <img
+        src="/logo.png"
+        alt="Al Amwaj Logo"
+        className="h-7 w-auto"
+      />
       <Link href="/" className="text-xl font-semibold tracking-tight">Al Amwaj Building Maintenance EST.</Link>
       <div className="flex gap-6 text-sm">
         <Link href="/services" className="hover:text-[#0B2042]">Services</Link>
