@@ -40,12 +40,12 @@ export default function Projects() {
             <figure
               key={p.title}
               className={`group relative overflow-hidden rounded-3xl border bg-white shadow-sm hover:shadow-lg transition-shadow ${
-                p.size === "medium" ? "sm:col-span-2 lg:col-span-2" : ""
+                p.size === "small" ? "sm:col-span-2 lg:col-span-2" : ""
               }`}
             >
               <div
                 className={`relative ${
-                  p.size === "medium"
+                  p.size === "small"
                     ? "h-[320px] sm:h-[380px] md:h-[420px]"
                     : "h-[220px] sm:h-[260px] md:h-[300px]"
                 }`}
