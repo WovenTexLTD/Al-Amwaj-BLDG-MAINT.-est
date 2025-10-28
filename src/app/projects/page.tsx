@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function Projects() {
-  // Update titles/clients as you like. Make sure the image files exist in /public (see list below).
   const projects = [
     { title: "KIZAD Headquarters", client: "Ali & Sons", img: "/hq.png" },
     { title: "Residential Apartments", client: "Ajmal Makan City", img: "/apartment.png" },
@@ -33,26 +32,26 @@ export default function Projects() {
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold tracking-tight text-white">Showroom</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Bigger boxes: 2 columns on desktop, 1 on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((p) => (
             <figure
               key={p.title}
-              className="group relative overflow-hidden rounded-2xl border bg-white"
+              className="group relative overflow-hidden rounded-3xl border bg-white shadow-sm hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-48 sm:h-56 lg:h-64">
+              <div className="relative h-[380px] sm:h-[420px] md:h-[480px] lg:h-[520px]">
                 <Image
                   src={p.img}
                   alt={p.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  priority={false}
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
 
               {/* Caption */}
-              <figcaption className="p-4">
-                <div className="font-medium text-[#0B2042]">{p.title}</div>
+              <figcaption className="p-6">
+                <div className="font-medium text-[#0B2042] text-lg">{p.title}</div>
                 <div className="text-sm text-slate-600">{p.client}</div>
               </figcaption>
             </figure>
