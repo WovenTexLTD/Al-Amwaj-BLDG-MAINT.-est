@@ -25,7 +25,7 @@ export default function Home() {
               href="/contact"
               className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90"
             >
-              Get a Quote
+              Get In Touch
             </Link>
             <Link
               href="/projects"
@@ -159,7 +159,7 @@ export default function Home() {
           href="/contact"
           className="px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90"
         >
-          Request a Proposal
+         Contact Us
         </Link>
       </section>
     </div>
