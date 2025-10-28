@@ -3,16 +3,16 @@ import Image from "next/image";
 export default function Projects() {
   const projects = [
     // Larger showcase images
-    { title: "KIZAD Headquarters", client: "Ali & Sons", img: "/hq.png", size: "medium" },
-    { title: "Residential Apartments", client: "Ajmal Makan City", img: "/apartment.png", size: "medium" },
+    { title: "KIZAD Headquarters", client: "Ali & Sons", img: "/hq.png", size: "small" },
+    { title: "Residential Apartments", client: "Ajmal Makan City", img: "/apartment.png", size: "small" },
 
     // Smaller, zoomed-in gallery images
-    { title: "Bulgari Villas, Jumeira", client: "Innova Build", img: "/bulgari.png", size: "medium" },
-    { title: "Palm Jumeirah Villas", client: "Private", img: "/villa.png", size: "medium" },
-    { title: "Luxury Interior Fit-out", client: "Private", img: "/interior.png", size: "medium" },
-    { title: "Retail & Mall Wing", client: "Main Contractor", img: "/mall.png", size: "medium" },
-    { title: "School Campus Block", client: "Developer", img: "/school.png", size: "medium" },
-    { title: "Corporate Office Floors", client: "Multiple", img: "/office.png", size: "medium" },
+    { title: "Bulgari Villas, Jumeira", client: "Innova Build", img: "/bulgari.png", size: "small" },
+    { title: "Palm Jumeirah Villas", client: "Private", img: "/villa.png", size: "small" },
+    { title: "Luxury Interior Fit-out", client: "Private", img: "/interior.png", size: "small" },
+    { title: "Retail & Mall Wing", client: "Main Contractor", img: "/mall.png", size: "small" },
+    { title: "School Campus Block", client: "Developer", img: "/school.png", size: "small" },
+    { title: "Corporate Office Floors", client: "Multiple", img: "/office.png", size: "small" },
   ];
 
   return (
