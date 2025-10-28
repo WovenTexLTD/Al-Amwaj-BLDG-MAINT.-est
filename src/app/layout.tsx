@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {/* Footer */}
   <footer className="mt-16 border-t bg-white">
     <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <p>© {new Date().getFullYear()} Al Amwaj Building Maintenance</p>
+      <p>© {new Date().getFullYear()} Al Amwaj Building Maintenance EST.</p>
       <div className="flex gap-6">
         <Link href="/privacy">Privacy</Link>
         <Link href="/terms">Terms</Link>
