@@ -19,7 +19,7 @@ export default function Projects() {
     <div className="space-y-12">
       {/* Intro card */}
       <section className="rounded-3xl bg-white border p-8 md:p-12">
-        <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
+        <span className="inline-block text-M font-semibold tracking-widest text-[#0B2042]/70 uppercase">
           Projects
         </span>
         <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight text-[#0B2042]">
