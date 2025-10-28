@@ -1,56 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
-  const [file, setFile] = useState<File | null>(null);
-  const [dragOver, setDragOver] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState<null | { type: "ok" | "err"; msg: string }>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
 
-  function handleDrop(e: React.DragEvent<HTMLLabelElement>) {
-    e.preventDefault();
-    setDragOver(false);
-    const f = e.dataTransfer.files?.[0];
-    if (f) validateAndSet(f);
-  }
-
-  function validateAndSet(f: File) {
-    const okTypes = ["application/pdf",
-      "application/msword",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-    const ok = okTypes.includes(f.type) || [".pdf", ".doc", ".docx"].some(ext => f.name.toLowerCase().endsWith(ext));
-    if (!ok) {
-      setStatus({ type: "err", msg: "Please upload a PDF, DOC, or DOCX file." });
-      return;
-    }
-    if (f.size > 10 * 1024 * 1024) {
-      setStatus({ type: "err", msg: "File too large (max 10 MB)." });
-      return;
-    }
-    setStatus(null);
-    setFile(f);
-  }
+  const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+  const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+  const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!formRef.current) return;
+
     setStatus(null);
-    setLoading(true);
-
-    const form = new FormData(e.currentTarget);
-    if (file) form.set("cv", file);
-
+    setSending(true);
     try {
-      const res = await fetch("/api/contact", { method: "POST", body: form });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data?.error || "Submission failed");
-      setStatus({ type: "ok", msg: "Thank you! We received your details." });
-      e.currentTarget.reset();
-      setFile(null);
+      // sendForm attaches the <input type="file" name="my_file"> files automatically
+      const res = await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
+        publicKey: PUBLIC_KEY,
+      });
+
+      if (res.status !== 200) throw new Error("Failed to send");
+      setStatus({ ok: true, msg: "Thanks! Your message has been sent." });
+      formRef.current.reset();
     } catch (err: any) {
-      setStatus({ type: "err", msg: err?.message || "Something went wrong." });
+      setStatus({ ok: false, msg: err?.message || "Something went wrong." });
     } finally {
-      setLoading(false);
+      setSending(false);
     }
   }
 
@@ -65,17 +45,17 @@ export default function ContactPage() {
           Get in touch with Al Amwaj
         </h1>
         <p className="mt-4 text-slate-600 max-w-3xl">
-          Send us your inquiry, BOQ, or CV. We’ll get back to you promptly.
+          Send us your inquiry, BOQ, or CV. We’ll reply promptly.
         </p>
       </section>
 
-      {/* Form */}
+      {/* Form (EmailJS) */}
       <section className="rounded-3xl bg-white border p-6 md:p-8">
-        <form onSubmit={onSubmit} className="grid md:grid-cols-2 gap-6">
+        <form ref={formRef} onSubmit={onSubmit} className="grid md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
             <label className="text-sm text-slate-700">Full Name</label>
             <input
-              name="name"
+              name="from_name"
               required
               className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
               placeholder="Your name"
@@ -86,7 +66,7 @@ export default function ContactPage() {
             <label className="text-sm text-slate-700">Email</label>
             <input
               type="email"
-              name="email"
+              name="from_email"
               required
               className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
               placeholder="you@example.com"
@@ -120,64 +100,42 @@ export default function ContactPage() {
             <textarea
               name="message"
               rows={5}
+              required
               className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
               placeholder="Tell us about your project or experience..."
             />
           </div>
 
-          {/* CV Drop Zone */}
-          <div className="md:col-span-2">
-            <label
-              onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-              onDragLeave={() => setDragOver(false)}
-              onDrop={handleDrop}
-              className={`flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed p-6 cursor-pointer transition
-                ${dragOver ? "border-[#0B2042] bg-[#0B2042]/5" : "border-slate-300 hover:border-[#0B2042]/60"}`}
-            >
-              <input
-                type="file"
-                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                className="hidden"
-                onChange={(e) => {
-                  const f = e.target.files?.[0];
-                  if (f) validateAndSet(f);
-                }}
-              />
-              <div className="text-sm text-slate-700">
-                <strong>Drag & drop</strong> your CV here, or click to browse
-              </div>
-              <div className="text-xs text-slate-500">PDF, DOC, or DOCX. Max 10MB.</div>
-
-              {file && (
-                <div className="mt-3 text-sm text-slate-700 flex items-center gap-3">
-                  <span className="rounded bg-slate-100 px-2 py-1">{file.name}</span>
-                  <button
-                    type="button"
-                    className="text-[#0B2042] underline"
-                    onClick={() => setFile(null)}
-                  >
-                    Remove
-                  </button>
-                </div>
-              )}
-            </label>
+          {/* CV upload — EmailJS will attach files from inputs named 'my_file' */}
+          <div className="md:col-span-2 flex flex-col gap-2">
+            <label className="text-sm text-slate-700">Attach CV (PDF/DOC/DOCX, up to 10MB)</label>
+            <input
+              type="file"
+              name="my_file"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              className="rounded-md border px-3 py-2"
+            />
           </div>
 
-          {/* Submit */}
           <div className="md:col-span-2 flex items-center justify-between">
             {status && (
-              <p className={`${status.type === "ok" ? "text-green-600" : "text-red-600"} text-sm`}>
+              <p className={`${status.ok ? "text-green-600" : "text-red-600"} text-sm`}>
                 {status.msg}
               </p>
             )}
             <button
               type="submit"
-              disabled={loading}
+              disabled={sending}
               className="ml-auto px-5 py-2.5 rounded-md bg-[#0B2042] text-white hover:opacity-90 disabled:opacity-60"
             >
-              {loading ? "Sending..." : "Send Message"}
+              {sending ? "Sending..." : "Send Message"}
             </button>
           </div>
+
+          <p className="md:col-span-2 text-xs text-slate-500">
+            By submitting, you agree to our <a href="/privacy" className="underline">Privacy Policy</a> and{" "}
+            <a href="/terms" className="underline">Terms</a>.
+          </p>
         </form>
       </section>
     </div>
