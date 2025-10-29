@@ -1,13 +1,14 @@
 // src/app/layout.tsx
 import "./globals.css";
-import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Header from "@/components/Header"; // 👈 new mobile header component
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Al Amwaj Building Maintenance EST.",
-  description: "False ceilings, gypsum works, and partitions across the UAE.",
+  description:
+    "False ceilings, gypsum works, and partitions across the UAE.",
 };
 
 export default function RootLayout({
@@ -17,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${font.className} min-h-screen text-slate-900`}>
+      <body
+        className={`${font.className} min-h-screen text-slate-900 antialiased`}
+      >
         {/* ===== Global background image with navy overlay ===== */}
         <div className="fixed inset-0 -z-10">
           <img
@@ -29,47 +32,8 @@ export default function RootLayout({
           <div className="absolute inset-x-0 top-0 h-[28vh] bg-gradient-to-b from-white to-transparent" />
         </div>
 
-        {/* ===== Header / Nav ===== */}
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
-          <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-            {/* Logo + name */}
-            <div className="flex items-center gap-2">
-              <img
-                src="/logo.png" // logo file in /public
-                alt="Al Amwaj Logo"
-                className="h-12 w-auto -my-2"
-              />
-              <Link href="/" className="text-lg font-semibold tracking-tight">
-                Al Amwaj Building Maintenance EST.
-              </Link>
-            </div>
-
-            {/* Links */}
-            <div className="flex gap-4 text-sm items-center">
-              <Link href="/services" className="hover:text-[#0B2042] transition">
-                Services
-              </Link>
-              <Link href="/projects" className="hover:text-[#0B2042] transition">
-                Projects
-              </Link>
-              <Link href="/about" className="hover:text-[#0B2042] transition">
-                About
-              </Link>
-              <Link
-                href="/hire"
-                className="font-medium px-3 py-1.5 rounded-md border border-[#0B2042] text-[#0B2042] hover:bg-[#0B2042] hover:text-white transition"
-              >
-                Hiring
-              </Link>
-              <Link
-                href="/contact"
-                className="font-medium px-3 py-1.5 rounded-md bg-[#0B2042] text-white hover:opacity-90 transition"
-              >
-                Get In Touch
-              </Link>
-            </div>
-          </nav>
-        </header>
+        {/* ===== Responsive Header (desktop + mobile) ===== */}
+        <Header />
 
         {/* ===== Page content ===== */}
         <main className="mx-auto max-w-6xl px-4 py-10">{children}</main>
@@ -80,14 +44,18 @@ export default function RootLayout({
             {/* Brand / Copyright */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <img src="/logo.png" alt="Al Amwaj Logo" className="h-8 w-auto" />
+                <img
+                  src="/logo.png"
+                  alt="Al Amwaj Logo"
+                  className="h-8 w-auto"
+                />
                 <span className="font-semibold">
                   Al Amwaj Building Maintenance EST.
                 </span>
               </div>
               <p className="text-slate-600">
-                © {new Date().getFullYear()} Al Amwaj Building Maintenance EST. All
-                rights reserved.
+                © {new Date().getFullYear()} Al Amwaj Building Maintenance EST.
+                All rights reserved.
               </p>
             </div>
 
@@ -105,7 +73,10 @@ export default function RootLayout({
                 </li>
                 <li>
                   Phone:{" "}
-                  <a href="tel:+971500000000" className="text-[#0B2042] hover:underline">
+                  <a
+                    href="tel:+971500000000"
+                    className="text-[#0B2042] hover:underline"
+                  >
                     +971 50 000 0000
                   </a>
                 </li>
@@ -118,18 +89,6 @@ export default function RootLayout({
                     info@alamwaj.com
                   </a>
                 </li>
-                {/* Optional WhatsApp */}
-                {/* <li>
-                  WhatsApp:{" "}
-                  <a
-                    href="https://wa.me/971500000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#0B2042] hover:underline"
-                  >
-                    +971 50 000 0000
-                  </a>
-                </li> */}
               </ul>
             </div>
 
@@ -138,14 +97,14 @@ export default function RootLayout({
               <h4 className="font-medium text-[#0B2042] mb-2">Links</h4>
               <ul className="space-y-1 text-slate-700">
                 <li>
-                  <Link href="/services" className="hover:underline">
+                  <a href="/services" className="hover:underline">
                     Services
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link href="/projects" className="hover:underline">
+                  <a href="/projects" className="hover:underline">
                     Projects
-                  </Link>
+                  </a>
                 </li>
                 <li>
                   <a
@@ -158,13 +117,13 @@ export default function RootLayout({
                   </a>
                 </li>
                 <li className="text-slate-500">
-                  <Link href="/privacy" className="hover:underline">
+                  <a href="/privacy" className="hover:underline">
                     Privacy
-                  </Link>{" "}
+                  </a>{" "}
                   ·{" "}
-                  <Link href="/terms" className="hover:underline">
+                  <a href="/terms" className="hover:underline">
                     Terms
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
