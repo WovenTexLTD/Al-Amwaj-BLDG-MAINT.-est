@@ -1,15 +1,9 @@
-// src/app/contact/page.tsx
+// src/components/ContactForm.tsx
 "use client";
 
 import { useState } from "react";
 
-export const metadata = {
-  title: "Contact – Al Amwaj Building Maintenance EST.",
-  description:
-    "Get in touch for false ceilings, gypsum partitions, and handover-ready finishes across the UAE.",
-};
-
-export default function ContactPage() {
+export default function ContactForm() {
   const [sending, setSending] = useState(false);
 
   return (
@@ -36,11 +30,10 @@ export default function ContactPage() {
         {/* Form */}
         <form
           className="px-4 sm:px-6 pb-5 sm:pb-6 mt-4 grid gap-4"
-          // (hook up your EmailJS or API handler here)
           onSubmit={(e) => {
             e.preventDefault();
             setSending(true);
-            // ... your submit logic
+            // TODO: hook up EmailJS or your API here
             setTimeout(() => setSending(false), 1200);
           }}
         >
