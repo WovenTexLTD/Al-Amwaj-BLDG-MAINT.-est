@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -18,13 +17,25 @@ export default function ContactPage() {
 
     setStatus(null);
     setSending(true);
+
     try {
-      // sendForm attaches the <input type="file" name="my_file"> files automatically
-      const res = await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
-        publicKey: PUBLIC_KEY,
+      const formData = new FormData(formRef.current);
+      // EmailJS REST expects these fields in the multipart payload:
+      formData.set("service_id", SERVICE_ID);
+      formData.set("template_id", TEMPLATE_ID);
+      formData.set("user_id", PUBLIC_KEY); // public key
+
+      // POST as multipart/form-data
+      const res = await fetch("https://api.emailjs.com/api/v1.0/email/send-form", {
+        method: "POST",
+        body: formData,
       });
 
-      if (res.status !== 200) throw new Error("Failed to send");
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(errText || "Failed to send");
+      }
+
       setStatus({ ok: true, msg: "Thanks! Your message has been sent." });
       formRef.current.reset();
     } catch (err: any) {
@@ -36,7 +47,6 @@ export default function ContactPage() {
 
   return (
     <div className="space-y-12">
-      {/* Intro */}
       <section className="rounded-3xl bg-white border p-8 md:p-12">
         <span className="inline-block text-xs font-semibold tracking-widest text-[#0B2042]/70 uppercase">
           Contact
@@ -49,46 +59,26 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Form (EmailJS) */}
       <section className="rounded-3xl bg-white border p-6 md:p-8">
         <form ref={formRef} onSubmit={onSubmit} className="grid md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
             <label className="text-sm text-slate-700">Full Name</label>
-            <input
-              name="from_name"
-              required
-              className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
-              placeholder="Your name"
-            />
+            <input name="from_name" required className="rounded-md border px-3 py-2" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-sm text-slate-700">Email</label>
-            <input
-              type="email"
-              name="from_email"
-              required
-              className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
-              placeholder="you@example.com"
-            />
+            <input type="email" name="from_email" required className="rounded-md border px-3 py-2" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-sm text-slate-700">Phone</label>
-            <input
-              name="phone"
-              className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
-              placeholder="+971 ..."
-            />
+            <input name="phone" className="rounded-md border px-3 py-2" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-sm text-slate-700">Reason</label>
-            <select
-              name="reason"
-              className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
-              defaultValue="General Inquiry"
-            >
+            <select name="reason" className="rounded-md border px-3 py-2" defaultValue="General Inquiry">
               <option>General Inquiry</option>
               <option>Request a Quote</option>
               <option>Apply for a Role</option>
@@ -97,16 +87,10 @@ export default function ContactPage() {
 
           <div className="md:col-span-2 flex flex-col gap-2">
             <label className="text-sm text-slate-700">Message</label>
-            <textarea
-              name="message"
-              rows={5}
-              required
-              className="rounded-md border px-3 py-2 outline-none focus:ring-2 focus:ring-[#0B2042]/40"
-              placeholder="Tell us about your project or experience..."
-            />
+            <textarea name="message" rows={5} required className="rounded-md border px-3 py-2" />
           </div>
 
-          {/* CV upload — EmailJS will attach files from inputs named 'my_file' */}
+          {/* Attach CV — EmailJS REST will include this file in the email */}
           <div className="md:col-span-2 flex flex-col gap-2">
             <label className="text-sm text-slate-700">Attach CV (PDF/DOC/DOCX, up to 10MB)</label>
             <input
@@ -119,9 +103,7 @@ export default function ContactPage() {
 
           <div className="md:col-span-2 flex items-center justify-between">
             {status && (
-              <p className={`${status.ok ? "text-green-600" : "text-red-600"} text-sm`}>
-                {status.msg}
-              </p>
+              <p className={`${status.ok ? "text-green-600" : "text-red-600"} text-sm`}>{status.msg}</p>
             )}
             <button
               type="submit"
