@@ -108,7 +108,7 @@ export default function RootLayout({
                 </li>
                 <li>
                   <a
-                    href="https://www.linkedin.com/company/your-company-slug"
+                    href="https://www.linkedin.com/company/al-amwaj-building-maintenance-est/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#0B2042] hover:underline"
