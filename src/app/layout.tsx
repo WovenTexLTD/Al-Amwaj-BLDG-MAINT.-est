@@ -77,7 +77,7 @@ export default function RootLayout({
                     href="tel:+97165684258"
                     className="text-[#0B2042] hover:underline"
                   >
-                    +971 50 000 0000
+                    +971 656 84258
                   </a>
                 </li>
                 <li>
@@ -86,7 +86,7 @@ export default function RootLayout({
                     href="mailto:alamwajbld@gmail.com"
                     className="text-[#0B2042] hover:underline"
                   >
-                    info@alamwaj.com
+                    alamwajbld@gmail.com
                   </a>
                 </li>
               </ul>
