@@ -12,11 +12,11 @@ export default function Home() {
             False Ceilings & Gypsum Works
           </span>
           <h1 className="mt-3 text-4xl md:text-5xl font-semibold leading-tight tracking-tight text-[#0B2042]">
-            Precision ceilings, delivered on time.
+      Crafting Spaces with Precision Since 1996
           </h1>
           <p className="mt-4 text-slate-600">
             We design, supply, and install high-quality gypsum and ceiling systems for
-            residential, commercial, and institutional projects across the UAE.
+            residential, commercial, and institutional projects baseed in the UAE and across the middle east.
             Coordinated execution, clean finishes, and reliable handover.
           </p>
 
