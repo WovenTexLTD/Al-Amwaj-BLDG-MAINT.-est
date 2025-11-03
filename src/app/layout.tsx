@@ -66,7 +66,7 @@ export default function RootLayout({
                 <li>
                   <span className="block">Office:</span>
                   <address className="not-italic">
-                    Dubai, United Arab Emirates
+                    Al Arouba Street, Sharjah, UAE
                     <br />
                     Business Bay (replace with exact address)
                   </address>
@@ -74,7 +74,7 @@ export default function RootLayout({
                 <li>
                   Phone:{" "}
                   <a
-                    href="tel:+971500000000"
+                    href="tel:+97165684258"
                     className="text-[#0B2042] hover:underline"
                   >
                     +971 50 000 0000
@@ -83,7 +83,7 @@ export default function RootLayout({
                 <li>
                   Email:{" "}
                   <a
-                    href="mailto:info@alamwaj.com"
+                    href="mailto:alamwajbld@gmail.com"
                     className="text-[#0B2042] hover:underline"
                   >
                     info@alamwaj.com
