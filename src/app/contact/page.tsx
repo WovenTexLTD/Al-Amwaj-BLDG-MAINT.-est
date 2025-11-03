@@ -32,7 +32,7 @@ export default function ContactForm() {
       console.error(err);
       setStatus({
         ok: false,
-        msg: "Sorry, something went wrong. Please try again or email info@alamwaj.com.",
+        msg: "Sorry, something went wrong. Please try again or email alamwajbld@gmail.com.",
       });
     } finally {
       setSending(false);
